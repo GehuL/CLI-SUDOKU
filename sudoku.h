@@ -21,10 +21,9 @@ namespace esirem
             Sudoku(Difficulty difficulty);
 
             unsigned int at(int x, int y) const;
+            const std::array<unsigned int, 81>& grid() { return _grid; }
 
             bool set(int x, int y, unsigned int value);
-
-            const std::array<unsigned int, 81>& grid() { return _grid; }
 
             inline int linearize(int x, int y) const;
 
