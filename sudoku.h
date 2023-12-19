@@ -8,9 +8,11 @@ namespace esirem
 {
     enum class Difficulty
     {
-        EASY = 0,
+        BEGINNER = 0,
+        EASY,
         NORMAl,
-        HARD
+        HARD,
+        EXPERT
     };
 
     class Sudoku
