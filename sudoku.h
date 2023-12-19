@@ -26,6 +26,7 @@ namespace esirem
             bool set(int x, int y, unsigned int value);
 
             inline int linearize(int x, int y) const;
+            inline void to_point(unsigned linear, unsigned* x, unsigned* y) const;
 
         private:
             std::array<unsigned int, 81> _grid;
