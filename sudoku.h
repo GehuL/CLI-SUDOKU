@@ -39,7 +39,6 @@ namespace sudoku
     // - If the sudoku is unsolvable, we return false and sudoku is the sale as before
     bool solve(Sudoku& sudoku) { return solve_recursive(sudoku, 0, 0); }
 
-
     std::iostream& operator<<(std::iostream& ios, const Sudoku& sudoku);
 }
 

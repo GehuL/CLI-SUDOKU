@@ -12,7 +12,7 @@ namespace sudoku
         _grid.fill(0);
 
         srand( time( NULL ) );
-        int case_nbr = static_cast<int>(difficulty);
+        int case_nbr = 34; //static_cast<int>(difficulty);
         // assert(case_nbr < _sudoku.size() && "Number of generated values can't be equal or greater than the grid size");
 
         while(case_nbr > 0)
@@ -26,6 +26,28 @@ namespace sudoku
             if(set(posx, posy, value))
                 case_nbr--;
         }
+    }
+
+    bool Sudoku::set(int x, int y, unsigned int value)
+    {
+        int pos = linearize(x, y);
+        assert(pos >= 0 && pos < _grid.size() && "Out of bounds");
+        if(!is_valid(*this, x, y, value))
+            return false;
+        _grid[pos] = value;
+        return true;
+    }
+
+    unsigned int Sudoku::at(int x, int y) const
+    {
+        int pos = linearize(x, y);
+        assert(pos >= 0 && pos < _grid.size() && "Out of bounds");
+        return _grid[pos];
+    }
+
+    int Sudoku::linearize(int x, int y) const
+    {
+        return static_cast<int>(sqrt(_grid.size())) * y + x; 
     }
 
     void Sudoku::to_point(unsigned pos, unsigned* posx, unsigned* posy) const
@@ -77,4 +99,11 @@ namespace sudoku
         sudoku.set(x, y, 0);
         return false;
     }
+
+    std::iostream& operator<<(std::iostream& ios, const Sudoku& sudoku)
+    {
+        // for(int i = 0; i < sudoku.)
+        return ios;
+    }
+
 }
