@@ -20,7 +20,7 @@ namespace sudoku
         public:
             Sudoku(Difficulty difficulty);
 
-            unsigned int at(int x, int y) const;
+            unsigned int at(int x, int y) const { return _grid.at(y*9 + x); }
             bool set(int x, int y, unsigned int value);
 
             inline int linearize(int x, int y) const;

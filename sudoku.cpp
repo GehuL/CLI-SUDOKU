@@ -28,6 +28,17 @@ namespace sudoku
         }
     }
 
+    bool Sudoku::set(int x, int y, unsigned int value)
+    {
+        if (is_valid(*this, x, y, value))
+        {
+            _grid.at(y*9 + x) = value;
+            return true;
+        }
+
+        return false;
+    }
+
     void Sudoku::to_point(unsigned pos, unsigned* posx, unsigned* posy) const
     {
         int len = static_cast<int>(sqrt(_grid.size()));
