@@ -31,4 +31,16 @@ namespace sudoku
 
         return true;
     }
+
+    bool solve_recursive(Sudoku& sudoku, unsigned x, unsigned y)
+    {
+        for (int value = 1; value < 10; value++)
+        {
+            if (sudoku.set(x, y, value))
+                return solve_recursive(sudoku, (x + 1)%9, (y+1)%9 );
+        }
+
+        sudoku.set(x, y, 0);
+        return false;
+    }
 }

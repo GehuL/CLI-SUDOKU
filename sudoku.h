@@ -29,8 +29,13 @@ namespace sudoku
 
     bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value);
 
-    // Sudoku solve(const Sudoku& sudoku);
-    void solve(Sudoku& sudoku);
+
+    bool solve_recursive(Sudoku& sudoku, unsigned x, unsigned y);
+
+    // - If the sudoku is solvable, we return true and sudoku is now the solution
+    // - If the sudoku is unsolvable, we return false and sudoku is the sale as before
+    bool solve(Sudoku& sudoku) { return solve_recursive(sudoku, 0, 0); }
+
 
     std::iostream& operator<<(std::iostream& ios, const Sudoku& sudoku);
 }
