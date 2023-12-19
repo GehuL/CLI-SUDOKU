@@ -4,18 +4,18 @@ namespace sudoku
 {
     bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value)
     {
-        if (sudoku.grid().at(y*9 + x) != 0)
+        if (sudoku.at(x, y) != 0)
             return false;
 
         for (int i = 0; i < 9; i++)
         {
-            if (sudoku.grid().at(y*9 + i) == value)
+            if (sudoku.at(i, y) == value)
                 return false;
         }
 
         for (int i = 0; i < 9; i++)
         {
-            if (sudoku.grid().at(i*9 + x) == value)
+            if (sudoku.at(x, i) == value)
                 return false;
         }
 
@@ -25,11 +25,10 @@ namespace sudoku
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
             {
-                if (sudoku.grid().at( (y_square + i)*3 + x_square + x ) == value)
+                if (sudoku.at(x_square + j, y_square + i ) == value)
                     return false;
             }
 
         return true;
     }
-
 }
