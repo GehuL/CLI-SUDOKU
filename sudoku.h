@@ -1,13 +1,15 @@
+#include <array>
+
 class Sudoku
 {
     public:
         Sudoku(unsigned difficulty);
 
-        const std::array<81, unsigned>& grid() { return _grid; }
+        const std::array<unsigned, 81>& grid() const { return _grid; }
 
     private:
-        std::array<81, unsigned> _grid;
-}
+        std::array<unsigned, 81> _grid;
+};
 
 bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value);
 
