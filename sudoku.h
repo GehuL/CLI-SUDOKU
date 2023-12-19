@@ -1,17 +1,40 @@
+#ifndef SUDOKU_H_
+#define SUDOKU_H_
+
 #include <array>
+#include <iostream>
 
-class Sudoku
+namespace sudoku
 {
-    public:
-        Sudoku(unsigned difficulty);
+    enum class Difficulty
+    {
+        EASY = 0,
+        NORMAl,
+        HARD
+    };
 
-        const std::array<unsigned, 81>& grid() const { return _grid; }
+    class Sudoku
+    {
+        public:
+            Sudoku(Difficulty difficulty);
 
-    private:
-        std::array<unsigned, 81> _grid;
-};
+            unsigned int at(int x, int y) const;
+            const std::array<unsigned int, 81>& grid() { return _grid; }
 
-bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value);
+            bool set(int x, int y, unsigned int value);
 
-// Sudoku solve(const Sudoku& sudoku);
-void solve(Sudoku& sudoku);
+            inline int linearize(int x, int y) const;
+
+        private:
+            std::array<unsigned int, 81> _grid;
+    };
+
+    bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value);
+
+    // Sudoku solve(const Sudoku& sudoku);
+    void solve(Sudoku& sudoku);
+
+    std::iostream& operator<<(std::iostream& ios, const Sudoku& sudoku);
+}
+
+#endif
