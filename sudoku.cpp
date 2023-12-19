@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <random>
 #include <time.h>
-#include <iostream>
+
 namespace sudoku
 {
     Sudoku::Sudoku(Difficulty difficulty)
@@ -16,7 +16,6 @@ namespace sudoku
         while(case_nbr > 0)
         {
             int value = rand() % 9 + 1;
-            std::cout << value << std::endl;
             unsigned posx, posy, pos = rand() % _grid.size();
             to_point(pos, &posx, &posy);
 
@@ -104,8 +103,12 @@ namespace sudoku
     {
         int len = sudoku.length();
 
-        for(int a = 0; a < len * 2; a++)
-            ios << '-';
+        for(int a = 0; a < len * 2 + 1; a++)
+            if(a % 6 == 0)
+                ios << '+';
+             else
+                ios << '-';
+        
         ios << std::endl;
         for(int i = 0; i < len; i++)
         {
