@@ -10,7 +10,7 @@ namespace sudoku
         _grid.fill(0);
 
         srand( time( NULL ) );
-        int case_nbr = 34; //static_cast<int>(difficulty);
+        unsigned case_nbr = random_case_number(difficulty);
         assert(case_nbr < _grid.size() && "Number of generated values can't be equal or greater than the grid size");
 
         while(case_nbr > 0)
@@ -23,6 +23,25 @@ namespace sudoku
                 case_nbr--;
         }
     }
+
+    unsigned Sudoku::random_case_number(Difficulty diff) const
+    {
+        switch(diff)
+        {
+            case Difficulty::BEGINNER:
+                return rand() % 20 + 40;
+            case Difficulty::EASY:
+            default: 
+                return rand() % 5 + 35;
+            case Difficulty::NORMAL:
+                return rand() % 5 + 30;
+            case Difficulty::HARD:
+                return rand() % 5 + 25;
+            case Difficulty::EXPERT:
+                return rand() % 5 + 20;
+        }
+    };
+
 
     bool Sudoku::set(int x, int y, unsigned int value)
     {

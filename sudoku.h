@@ -11,7 +11,7 @@ namespace sudoku
     {
         BEGINNER = 0,
         EASY,
-        NORMAl,
+        NORMAL,
         HARD,
         EXPERT
     };
@@ -31,6 +31,9 @@ namespace sudoku
             inline void to_point(unsigned linear, unsigned* x, unsigned* y) const;
 
         private:
+
+            unsigned random_case_number(Difficulty diff) const;
+
             std::array<unsigned int, 81> _grid;
     };
 
