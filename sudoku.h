@@ -2,7 +2,8 @@
 #define SUDOKU_H_
 
 #include <array>
-#include <iostream>
+#include <ostream>
+#include <math.h>
 
 namespace sudoku
 {
@@ -20,8 +21,11 @@ namespace sudoku
         public:
             Sudoku(Difficulty difficulty);
 
-            unsigned int at(int x, int y) const { return _grid.at(y*9 + x); }
+            unsigned int at(int x, int y) const;
             bool set(int x, int y, unsigned int value);
+
+            // number of row or col
+            unsigned length() const { return static_cast<unsigned>(sqrt(_grid.size())); }
 
             inline int linearize(int x, int y) const;
             inline void to_point(unsigned linear, unsigned* x, unsigned* y) const;
@@ -37,7 +41,7 @@ namespace sudoku
     bool solve(Sudoku& sudoku);
     bool solve_recursive(Sudoku& sudoku, unsigned x, unsigned y);
 
-    std::iostream& operator<<(std::iostream& ios, const Sudoku& sudoku);
+    std::ostream& operator<<(std::ostream& ios, const Sudoku& sudoku);
 }
 
 #endif
