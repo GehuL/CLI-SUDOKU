@@ -4,7 +4,7 @@
 #include <array>
 #include <iostream>
 
-namespace esirem
+namespace sudoku
 {
     enum class Difficulty
     {

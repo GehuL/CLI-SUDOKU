@@ -1,6 +1,5 @@
 #include "sudoku.h"
 
-#include "sudoku.h"
 #include <math.h>
 #include <assert.h>
 #include <random>
@@ -39,18 +38,18 @@ namespace esirem
 
     bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value)
     {
-        if (sudoku.at(y*9, x) != 0)
+        if (sudoku.grid().at(y*9 + x) != 0)
             return false;
 
         for (int i = 0; i < 9; i++)
         {
-            if (sudoku.at(y*9, i) == value)
+            if (sudoku.grid().at(y*9 + i) == value)
                 return false;
         }
 
         for (int i = 0; i < 9; i++)
         {
-            if (sudoku.at(i*9, x) == value)
+            if (sudoku.grid().at(i*9 + x) == value)
                 return false;
         }
 
@@ -60,10 +59,12 @@ namespace esirem
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
             {
-                if (sudoku.at((y_square + i)*3, x_square + x) == value)
+
+                if (sudoku.grid().at( (y_square + i)*3 + x_square + x ) == value)
                     return false;
             }
 
         return true;
     }
+
 }
