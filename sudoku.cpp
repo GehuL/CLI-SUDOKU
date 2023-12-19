@@ -77,6 +77,11 @@ namespace sudoku
         return true;
     }
 
+    bool solve(Sudoku& sudoku)
+    {
+        return solve_recursive(sudoku, 0, 0);
+    }
+
     bool solve_recursive(Sudoku& sudoku, unsigned x, unsigned y)
     {
         for (int value = 1; value < 10; value++)

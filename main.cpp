@@ -1,7 +1,10 @@
+#include "sudoku.h"
+
 #include <iostream>
 
 int main(int argc, char* argv[])
 {
-    std::cout << "Hello World !" << std::endl;
+    sudoku::Sudoku sudoku(sudoku::Difficulty::EASY);
+
     return 0;
 }
