@@ -33,7 +33,7 @@ namespace sudoku
         int len = static_cast<int>(sqrt(_grid.size()));
 
         *posx = pos % len;
-        *posy = len / (pos - *posx) - 1;
+        *posy = pos / len;
     }
 
     bool is_valid(const Sudoku& sudoku, unsigned x, unsigned y, unsigned value)
